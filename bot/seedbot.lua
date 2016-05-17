@@ -213,24 +213,35 @@ function create_config( )
   config = {
     enabled_plugins = {
 	"admin",
-    "onservice",
-    "inrealm",
-    "ingroup",
-    "inpm",
-    "banhammer",
-    "stats",
-    "anti_spam",
-    "owners",
-    "arabic_lock",
-    "set",
-    "get",
-    "broadcast",
-    "invite",
-    "all",
-    "leave_ban",
+	"badword",
+	"banhammer",
+	"broadcast",
+	"checks",
+	"coin",
+	"help",
+	"ingroup",
+	"inpm",
+	"inrealm",
+	"invite",
+	"join",
+	"leave",
+	"lockbot",
+	"lockforward",
+	"lockspam",
+	"locktag",
+	"owners",
+	"photo",
+	"plugins",
+	"rem",
+	"send",
+	"sticker",
 	"supergroup",
+	"time",
+	"voice",
+	"weather",
+	"webshot",
 	"whitelist",
-	"msg_checks"
+
     },
     sudo_users = {112840592,163320706},--Sudo users
     moderation = {data = 'data/moderation.json'},
@@ -464,6 +475,13 @@ This command will send text to [group_id]
 🔘Returns Username
 #res @username
 
+
+🔘Returns TeleIran About
+#TeleIran 
+
+〰〰〰〰〰〰〰〰〰〰〰〰
+✅Channel: @TeleIranTeam☢
+
 ]],
 	help_text_super =[[
 *SuperGroup Commands*
@@ -609,6 +627,13 @@ This command will send text to [group_id]
 
 🔘Returns Username
 #res @username
+
+
+🔘Returns TeleIran About
+#TeleIran 
+
+〰〰〰〰〰〰〰〰〰〰〰〰
+✅Channel: @TeleIranTeam☢
 
 ]],
   }
