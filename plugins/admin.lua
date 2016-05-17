@@ -25,7 +25,7 @@ local function logadd(msg)
 	end
 	data[tostring(GBan_log)][tostring(msg.to.id)] = msg.to.peer_id
 	save_data(_config.moderation.data, data)
-	local text = 'Log_SuperGroup has has been set!'
+	local text = 'SuperGroup LOG Has Been Set'
 	reply_msg(msg.id,text,ok_cb,false)
 	return
 end
@@ -41,7 +41,7 @@ local function logrem(msg)
 	end
 	data[tostring(GBan_log)][tostring(msg.to.id)] = nil
 	save_data(_config.moderation.data, data)
-	local text = 'Log_SuperGroup has has been removed!'
+	local text = 'SuperGroup LOG Has Been Removed'
 	reply_msg(msg.id,text,ok_cb,false)
 	return
 end
@@ -172,11 +172,11 @@ local function run(msg,matches)
     if matches[1] == "markread" then
     	if matches[2] == "on" then
     		redis:set("bot:markread", "on")
-    		return "Mark read > on"
+    		return "Mark Read Has Been ON"
     	end
     	if matches[2] == "off" then
     		redis:del("bot:markread")
-    		return "Mark read > off"
+    		return "Mark Read Has Been OFF"
     	end
     	return
     end
@@ -261,8 +261,8 @@ end
 	if matches[1] == 'reload' then
 		receiver = get_receiver(msg)
 		reload_plugins(true)
-		post_msg(receiver, "Reloaded!", ok_cb, false)
-		return "Reloaded!"
+		post_msg(receiver, "BOT Has Been Reloaded", ok_cb, false)
+		return "BOT Has Been Reloaded"
 	end
 	--[[*For Debug*
 	if matches[1] == "vardumpmsg" and is_admin1(msg) then
@@ -329,6 +329,3 @@ return {
   run = run,
   pre_process = pre_process
 }
---By @imandaneshi :)
---https://github.com/SEEDTEAM/TeleSeed/blob/test/plugins/admin.lua
----Modified by @Rondoozle for supergroups
