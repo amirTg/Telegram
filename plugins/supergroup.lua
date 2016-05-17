@@ -1066,7 +1066,7 @@ elseif get_cmd == "setadmin" then
 				data[tostring(channel)]['set_owner'] = tostring(memberid)
 				save_data(_config.moderation.data, data)
 				savelog(channel, name_log.."["..from_id.."] set ["..memberid.."] as owner by username")
-				text = "["..memberid.."] added as owner"
+				text = "["..memberid.."] Has Been Owner"
 			end
 		end
 	end
@@ -1090,10 +1090,10 @@ local function set_supergroup_photo(msg, success, result)
     channel_set_photo(receiver, file, ok_cb, false)
     data[tostring(msg.to.id)]['settings']['set_photo'] = file
     save_data(_config.moderation.data, data)
-    send_large_msg(receiver, 'Photo saved!', ok_cb, false)
+    send_large_msg(receiver, 'Photo Saved', ok_cb, false)
   else
     print('Error downloading: '..msg.id)
-    send_large_msg(receiver, 'Failed, please try again!', ok_cb, false)
+    send_large_msg(receiver, 'Failed, Please Try Again', ok_cb, false)
   end
 end
 
@@ -1112,7 +1112,7 @@ local function run(msg, matches)
 			if not is_admin1(msg) then
 				return
 			end
-			return "Already a SuperGroup"
+			return "Already SuperGroup"
 		end
 	end
 	if msg.to.type == 'channel' then
@@ -1126,7 +1126,7 @@ local function run(msg, matches)
 				return
 			end
 			if is_super_group(msg) then
-				return reply_msg(msg.id, 'SuperGroup is already added.', ok_cb, false)
+				return reply_msg(msg.id, 'SuperGroup Is Already Install', ok_cb, false)
 			end
 			print("SuperGroup "..msg.to.print_name.."("..msg.to.id..") added")
 			savelog(msg.to.id, name_log.." ["..msg.from.id.."] added SuperGroup")
@@ -1137,9 +1137,9 @@ local function run(msg, matches)
 
 		if matches[1] == 'rem' and is_admin1(msg) and not matches[2] then
 			if not is_super_group(msg) then
-				return reply_msg(msg.id, 'SuperGroup is not added.', ok_cb, false)
+				return reply_msg(msg.id, 'SuperGroup Is NOT Install', ok_cb, false)
 			end
-			print("SuperGroup "..msg.to.print_name.."("..msg.to.id..") removed")
+			print("SuperGroup "..msg.to.print_name.."("..msg.to.id..") Removed")
 			superrem(msg)
 			rem_mutes(msg.to.id)
 		end
@@ -1319,7 +1319,7 @@ local function run(msg, matches)
 				return "Create a link using /newlink first!\n\nOr if I am not creator use /setlink to set your link"
 			end
 			savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested group link ["..group_link.."]")
-			return "Group link:\n"..group_link
+			return "SuperGroup Link: \n "..group_link
 		end
 
 		if matches[1] == "invite" and is_sudo(msg) then
@@ -1553,9 +1553,9 @@ local function run(msg, matches)
 			local function ok_username_cb (extra, success, result)
 				local receiver = extra.receiver
 				if success == 1 then
-					send_large_msg(receiver, "SuperGroup username Set.\n\nSelect the chat again to see the changes.")
+					send_large_msg(receiver, "SuperGroup Username Set")
 				elseif success == 0 then
-					send_large_msg(receiver, "Failed to set SuperGroup username.\nUsername may already be taken.\n\nNote: Username can use a-z, 0-9 and underscores.\nMinimum length is 5 characters.")
+					send_large_msg(receiver, "Failed to set SuperGroup username")
 				end
 			end
 			local username = string.gsub(matches[2], '@', '')
@@ -1651,39 +1651,39 @@ local function run(msg, matches)
 		if matches[1] == 'lock' and is_momod(msg) then
 			local target = msg.to.id
 			if matches[2] == 'links' then
-				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked link posting ")
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] Locked Send Link ")
 				return lock_group_links(msg, data, target)
 			end
 			if matches[2] == 'spam' then
-				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked spam ")
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] Locked Spam ")
 				return lock_group_spam(msg, data, target)
 			end
 			if matches[2] == 'flood' then
-				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked flood ")
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] Locked Flood ")
 				return lock_group_flood(msg, data, target)
 			end
 			if matches[2] == 'arabic' then
-				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked arabic ")
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] Locked Arabic ")
 				return lock_group_arabic(msg, data, target)
 			end
 			if matches[2] == 'member' then
-				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked member ")
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] Locked Member ")
 				return lock_group_membermod(msg, data, target)
 			end
 			if matches[2]:lower() == 'rtl' then
-				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked rtl chars. in names")
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] Locked RTL ")
 				return lock_group_rtl(msg, data, target)
 			end
 			if matches[2] == 'tgservice' then
-				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked Tgservice Actions")
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] Locked TgService Actions ")
 				return lock_group_tgservice(msg, data, target)
 			end
 			if matches[2] == 'sticker' then
-				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked sticker posting")
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] Locked Send Sticker ")
 				return lock_group_sticker(msg, data, target)
 			end
 			if matches[2] == 'contacts' then
-				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked contact posting")
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] Locked Share Contacts ")
 				return lock_group_contacts(msg, data, target)
 			end
 			if matches[2] == 'strict' then
@@ -1695,7 +1695,7 @@ local function run(msg, matches)
 		if matches[1] == 'unlock' and is_momod(msg) then
 			local target = msg.to.id
 			if matches[2] == 'links' then
-				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked link posting")
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked link ")
 				return unlock_group_links(msg, data, target)
 			end
 			if matches[2] == 'spam' then
@@ -1715,7 +1715,7 @@ local function run(msg, matches)
 				return unlock_group_membermod(msg, data, target)
 			end
 			if matches[2]:lower() == 'rtl' then
-				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked RTL chars. in names")
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked RTL")
 				return unlock_group_rtl(msg, data, target)
 			end
 				if matches[2] == 'tgservice' then
@@ -1723,11 +1723,11 @@ local function run(msg, matches)
 				return unlock_group_tgservice(msg, data, target)
 			end
 			if matches[2] == 'sticker' then
-				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked sticker posting")
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked sticker ")
 				return unlock_group_sticker(msg, data, target)
 			end
 			if matches[2] == 'contacts' then
-				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked contact posting")
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked contact ")
 				return unlock_group_contacts(msg, data, target)
 			end
 			if matches[2] == 'strict' then
@@ -1964,7 +1964,7 @@ local function run(msg, matches)
 		end
 
 		if matches[1] == 'help' and not is_owner(msg) then
-			text = "Message /superhelp to @Teleseed in private for SuperGroup help"
+			text = "Send /superhelp For @TeleIran"
 			reply_msg(msg.id, text, ok_cb, false)
 		elseif matches[1] == 'help' and is_owner(msg) then
 			local name_log = user_print_name(msg.from)
@@ -2041,8 +2041,8 @@ return {
 	"^[#!/]([Bb]ots)$",
 	"^[#!/]([Ww]ho)$",
 	"^[#!/]([Kk]icked)$",
-    "^[#!/]([Bb]lock) (.*)",
-	"^[#!/]([Bb]lock)",
+     -- "^[#!/]([Bb]lock) (.*)",
+     -- "^[#!/]([Bb]lock)",
 	"^[#!/]([Tt]osuper)$",
 	"^[#!/]([Ii][Dd])$",
 	"^[#!/]([Ii][Dd]) (.*)$",
@@ -2066,7 +2066,7 @@ return {
 	"^[#!/]([Ss]etabout) (.*)$",
 	"^[#!/]([Ss]etrules) (.*)$",
 	"^[#!/]([Ss]etphoto)$",
-	"^[#!/]([Ss]etusername) (.*)$",
+     -- "^[#!/]([Ss]etusername) (.*)$",
 	"^[#!/]([Dd]el)$",
 	"^[#!/]([Ll]ock) (.*)$",
 	"^[#!/]([Uu]nlock) (.*)$",
@@ -2082,9 +2082,9 @@ return {
 	"^[#!/]([Hh]elp)$",
 	"^[#!/]([Mm]uteslist)$",
 	"^[#!/]([Mm]utelist)$",
-    "[#!/](mp) (.*)",
+        "[#!/](mp) (.*)",
 	"[#!/](md) (.*)",
-    "^(https://telegram.me/joinchat/%S+)$",
+        "^(https://telegram.me/joinchat/%S+)$",
 	"msg.to.peer_id",
 	"%[(document)%]",
 	"%[(photo)%]",
@@ -2096,5 +2096,4 @@ return {
   run = run,
   pre_process = pre_process
 }
---End supergrpup.lua
---By @Rondoozle
+
