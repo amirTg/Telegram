@@ -13,8 +13,6 @@ local function run(msg, matches)
   return text
 end
 return {
-  description = "coin in now", 
-  usage = "coin",
   patterns = {
     "^[!/#](coin)$"
   }, 
