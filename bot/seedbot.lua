@@ -464,14 +464,6 @@ This command will send text to [group_id]
 🔘Returns Username
 #res @username
 
-
-🔘Returns TeleIran About
-#TeleIran 
-
-〰〰〰〰〰〰〰〰〰〰〰〰
-
-✅Channel: @TeleIranTeam☢
-
 ]],
 	help_text_super =[[
 *SuperGroup Commands*
@@ -607,7 +599,7 @@ This command will send text to [group_id]
 
 
 🔘Delete Message 
-#del
+#rmsg [value]
 
 
 🔘Set Chat Publication
@@ -618,13 +610,6 @@ This command will send text to [group_id]
 🔘Returns Username
 #res @username
 
-
-🔘Returns TeleIran About
-#TeleIran 
-
-〰〰〰〰〰〰〰〰〰〰〰〰
-
-✅Channel: @TeleIranTeam☢
 ]],
   }
   serialize_to_file(config, './data/config.lua')
