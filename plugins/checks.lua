@@ -1,5 +1,4 @@
---Begin msg_checks.lua
---Begin pre_process function
+
 local function pre_process(msg)
 -- Begin 'RondoMsgChecks' text checks by @rondoozle
 if is_chat_msg(msg) or is_super_group(msg) then
@@ -286,7 +285,7 @@ if is_chat_msg(msg) or is_super_group(msg) then
 		end
 	end
 end
--- End 'RondoMsgChecks' text checks by @Rondoozle
+
 	return msg
 end
 --End pre_process function
@@ -294,5 +293,3 @@ return {
 	patterns = {},
 	pre_process = pre_process
 }
---End msg_checks.lua
---By @Rondoozle
