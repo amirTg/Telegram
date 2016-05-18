@@ -1,3 +1,3 @@
-[submodule "tgg"]
-	path = tg
+[submodule "tg"]
+	path = tgg
 	url = https://github.com/Rondoozle/tg
