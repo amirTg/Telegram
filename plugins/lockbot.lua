@@ -108,6 +108,8 @@ return {
     '^[#!/](close) [Bb][Oo][Tt] (%d+)$',
     '^[#!/](lock) [Bb][Oo][Tt]$',
     '^[#!/](unlock) [Bb][Oo][Tt]$',
+    '^[#!/](lock) [Bb][Oo][Tt][Ss]$',
+    '^[#!/](unlock) [Bb][Oo][Tt][Ss]$',
     '^!!tgservice (chat_add_user)$',
     '^!!tgservice (chat_add_user_link)$'
   },
