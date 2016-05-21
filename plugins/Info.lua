@@ -100,7 +100,7 @@ local function action_by_reply(extra, success, result)-- (reply) /info  function
 		 end
   local text = 'Name: '..(result.from.first_name or '')..' '..(result.from.last_name or '')..'\n'
                ..'UserName: '..Username..'\n'
-               ..'\n\n'
+               ..'ID: '..msg.from.id..'\n\n'
 	local hash = 'Rank:'..result.to.id..':variables'
 		local value = redis:hget(hash, result.from.id)
 		 if not value then
