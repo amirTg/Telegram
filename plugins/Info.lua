@@ -1,3 +1,4 @@
+
 do
 local Sudo = 112840592
 
@@ -22,6 +23,7 @@ local function res_user_callback(extra, success, result) -- /info <username> fun
   end
     local text = 'Name: '..(result.first_name or '')..' '..(result.last_name or '')..'\n'
                ..'UserName: '..Username..'\n'
+               ..'ID: '..result.id..'\n\n'
 	local hash = 'rank:'..extra.chat2..':variables'
 	local value = redis:hget(hash, result.id)
     if not value then
@@ -37,13 +39,13 @@ local function res_user_callback(extra, success, result) -- /info <username> fun
 	    text = text..'Rank: Member \n\n'
 	 end
    else
-   text = text..'Rank: '..value..'\n\n'
+   text = text..'Rank : '..value..'\n\n'
   end
   local uhash = 'user:'..result.id
   local user = redis:hgetall(uhash)
   local um_hash = 'msgs:'..result.id..':'..extra.chat2
   user_info_msgs = tonumber(redis:get(um_hash) or 0)
-  text = text..'Total Messages: '..user_info_msgs..'\n\n'
+  text = text..'Total Messages : '..user_info_msgs..'\n\n'
   text = text..''
   send_msg(extra.receiver, text, ok_cb,  true)
   else
@@ -97,8 +99,8 @@ local function action_by_reply(extra, success, result)-- (reply) /info  function
 		   Username = '----'
 		 end
   local text = 'Name: '..(result.from.first_name or '')..' '..(result.from.last_name or '')..'\n'
-               ..'Username: '..Username..'\n'
-               ..'ID: '..result.from.id..'\n\n'
+               ..'UserName: '..Username..'\n'
+               ..'\n\n'
 	local hash = 'Rank:'..result.to.id..':variables'
 		local value = redis:hget(hash, result.from.id)
 		 if not value then
