@@ -246,7 +246,7 @@ function create_config( )
 	"whitelist",
 
     },
-    sudo_users = {112840592,163320706},--Sudo users
+    sudo_users = {132855224},--Sudo users
     moderation = {data = 'data/moderation.json'},
     about_text = [[
 ]],
@@ -726,3 +726,5 @@ our_id = 0
 now = os.time()
 math.randomseed(now)
 started = false
+,
+	
